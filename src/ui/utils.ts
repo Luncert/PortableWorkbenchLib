@@ -14,6 +14,14 @@ export function conditionalValue(condition: any, value: any) {
   return condition ? value : null;
 }
 
+export function conditionalRun(predicate: () => boolean, call: () => void) {
+  return () => {
+    if (predicate()) {
+      call();
+    }
+  };
+}
+
 export function buildLogSourceId(appId: string, instanceId: string) {
   return encodeURIComponent(`${appId}#${instanceId}`);
 }
