@@ -1,0 +1,24 @@
+{
+  "name": "portableworkbenchlib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": ".\\node_modules\\.bin\\tsc -w -p .",
+    "compile": ".\\node_modules\\.bin\\tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luncert/PortableWorkbenchLib.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luncert/PortableWorkbenchLib/issues"
+  },
+  "homepage": "https://github.com/Luncert/PortableWorkbenchLib#readme",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}
