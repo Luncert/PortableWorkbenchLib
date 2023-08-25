@@ -1,8 +1,8 @@
-import React, { HTMLAttributes, PropsWithChildren, createRef, useState } from "react";
+import React, { HTMLAttributes, PropsWithChildren, createRef, useEffect, useState } from "react";
 import anime from 'animejs';
 
 type AnimatorEvent = 'mouseEnter' | 'mouseLeave' | 'mouseDown' | 'mouseUp' | 'focus' | 'blur';
-export type AnimatorEventHandler<T> = (event: AnimatorEvent, ref: T, state: ElementState) => void;
+export type AnimatorEventHandler<T> = (event: AnimatorEvent, ref: T, state: ElementState) => boolean;
 
 interface ElementState {
   hover: boolean;
@@ -12,6 +12,7 @@ interface ElementState {
 
 interface AnimatorProps<T> extends HTMLAttributes<T> {
   as?: string;
+  isActive?: boolean;
   bindRef?: React.RefObject<T>;
   handler: AnimatorEventHandler<T>;
 }
@@ -24,35 +25,48 @@ export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) 
   const [active, setActive] = useState(false);
   const state = {focus: focused, hover: hovered, active};
 
+  useEffect(() => {
+    setActive(props.isActive);
+  }, [props.isActive]);
+
   const newProps = {
     ...props,
     ref,
     onMouseEnter: () => {
-      setHovered(true);
-      handler('mouseEnter', ref.current, state);
+      if (handler('mouseEnter', ref.current, state)) {
+        setHovered(true);
+      }
     },
     onMouseLeave: () => {
-      setHovered(false);
-      handler('mouseLeave', ref.current, state);
+      if (handler('mouseLeave', ref.current, state)) {
+        setHovered(false);
+      }
+     ;
     },
     onMouseDown: () => {
-      setActive(true);
-      handler('mouseDown', ref.current, state);
+      if (handler('mouseDown', ref.current, state)) {
+        setActive(true);
+      }
     },
     onMouseUp: () => {
-      setActive(false);
-      handler('mouseUp', ref.current, state);
+      if (handler('mouseUp', ref.current, state)) {
+        console.log(1)
+        setActive(false);
+      }
     },
     onFocus: () => {
-      setFocused(true);
-      handler('focus', ref.current, state);
+      if (handler('focus', ref.current, state)) {
+        setFocused(true);
+      }
     },
     onBlur: () => {
-      setFocused(false);
-      handler('blur', ref.current, state);
+      if (handler('blur', ref.current, state)) {
+        setFocused(false);
+      }
     },
   };
   delete newProps['as'];
+  delete newProps['isActive'];
   delete newProps['bindRef'];
   delete newProps['handler'];
 
