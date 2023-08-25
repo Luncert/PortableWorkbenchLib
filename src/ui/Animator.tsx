@@ -12,12 +12,13 @@ interface ElementState {
 
 interface AnimatorProps<T> extends HTMLAttributes<T> {
   as?: string;
+  bindRef?: React.RefObject<T>;
   handler: AnimatorEventHandler<T>;
 }
 
 export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) {
   const { as, handler, children } = props;
-  const ref: React.RefObject<T> = createRef();
+  const ref: React.RefObject<T> = props.bindRef ? props.bindRef : createRef();
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [active, setActive] = useState(false);
@@ -52,6 +53,7 @@ export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) 
     },
   };
   delete newProps['as'];
+  delete newProps['bindRef'];
   delete newProps['handler'];
 
   return React.createElement(as || 'div', newProps, children);
