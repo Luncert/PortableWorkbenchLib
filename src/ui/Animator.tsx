@@ -59,27 +59,16 @@ export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) 
   return React.createElement(as || 'div', newProps, children);
 }
 
-export function animate({
-  target,
-  color,
-  backgroundColor,
-  duration = 100,
-}: {
-  target: any
-  color?: any;
-  backgroundColor?: any;
+interface AnimateProps extends React.CSSProperties {
+  targets: any
+  easing?: string;
   duration?: number;
-}) {
-  const props = {
-    targets: target,
+}
+
+export function animate(props: AnimateProps) {
+  anime({
     easing: 'easeInOutSine',
-    duration,
-  } as any;
-  if (color) {
-    props.color = color;
-  }
-  if (backgroundColor) {
-    props.backgroundColor = backgroundColor;
-  }
-  anime(props);
+    duration: 100,
+    ...props,
+  });
 }
