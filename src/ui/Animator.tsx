@@ -49,7 +49,6 @@ export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) 
     },
     onMouseUp: () => {
       if (handler('mouseUp', ref.current as T, state)) {
-        console.log(1)
         setActive(false);
       }
     },
