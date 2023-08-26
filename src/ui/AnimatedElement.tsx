@@ -136,13 +136,15 @@ export default class AnimatedElement extends Component<AnimatedElementProps> {
 
   protected startFocusAnimation() {
     this.focused = true;
-    this.ref.current.style.backgroundColor =
-      this.animationProps.focus?.backgroundColor;
+    if (this.ref.current) {
+      this.ref.current.style.backgroundColor =
+        this.animationProps.focus?.backgroundColor || '';
+    }
   }
 
   protected stopFocusAnimation() {
     this.focused = false;
-    if (this.backgroundColor) {
+    if (this.ref.current && this.backgroundColor) {
       this.ref.current.style.backgroundColor = this.backgroundColor;
     }
   }

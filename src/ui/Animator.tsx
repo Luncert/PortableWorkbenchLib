@@ -26,41 +26,40 @@ export default function Animator<T>(props: PropsWithChildren<AnimatorProps<T>>) 
   const state = {focus: focused, hover: hovered, active};
 
   useEffect(() => {
-    setActive(props.isActive);
+    setActive(props.isActive || false);
   }, [props.isActive]);
 
-  const newProps = {
+  const newProps: any = {
     ...props,
     ref,
     onMouseEnter: () => {
-      if (handler('mouseEnter', ref.current, state)) {
+      if (handler('mouseEnter', ref.current as T, state)) {
         setHovered(true);
       }
     },
     onMouseLeave: () => {
-      if (handler('mouseLeave', ref.current, state)) {
+      if (handler('mouseLeave', ref.current as T, state)) {
         setHovered(false);
       }
-     ;
     },
     onMouseDown: () => {
-      if (handler('mouseDown', ref.current, state)) {
+      if (handler('mouseDown', ref.current as T, state)) {
         setActive(true);
       }
     },
     onMouseUp: () => {
-      if (handler('mouseUp', ref.current, state)) {
+      if (handler('mouseUp', ref.current as T, state)) {
         console.log(1)
         setActive(false);
       }
     },
     onFocus: () => {
-      if (handler('focus', ref.current, state)) {
+      if (handler('focus', ref.current as T, state)) {
         setFocused(true);
       }
     },
     onBlur: () => {
-      if (handler('blur', ref.current, state)) {
+      if (handler('blur', ref.current as T, state)) {
         setFocused(false);
       }
     },

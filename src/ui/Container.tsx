@@ -1,7 +1,7 @@
 
 import { PropsWithChildren, DOMAttributes, HTMLAttributes } from 'react';
-import styles from './Container.module.scss';
 import { conditionalString, names } from './utils';
+import styles from './Container.module.scss';
 
 interface ContainerProps extends HTMLAttributes<HTMLElement> {
   blur?: boolean;
@@ -12,7 +12,7 @@ interface ContainerProps extends HTMLAttributes<HTMLElement> {
 export default function Card(props: PropsWithChildren<ContainerProps>) {
   return (
     <div className={names(
-      props.className,
+      props.className || '',
       styles.container,
       conditionalString(blur, styles.blur),
       conditionalString(props.radius, styles.radius),
