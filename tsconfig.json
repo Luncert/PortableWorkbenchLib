@@ -10,14 +10,12 @@
     "rootDir": "src",
     "outDir": "lib",
     "noImplicitAny": false,
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "types": [ "node" ],
     "typeRoots": ["./node_modules/@types" ],
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "paths": {
-      "@styles/*": ["../assets/styles/*"]
-    }
+    "strictPropertyInitialization": false
   },
   "include": ["src/**/*"],
 }

@@ -1,7 +1,7 @@
 
 import { PropsWithChildren, HTMLAttributes, useContext, createContext, useState, createRef, useEffect } from 'react';
 import { names } from './utils';
-import '@styles/List.css';
+import '../../assets/styles/List.css';
 
 interface ListProps extends HTMLAttributes<HTMLDivElement> {
   onSelected?: (name: string, index: number) => void;

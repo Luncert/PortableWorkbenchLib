@@ -1,6 +1,6 @@
 import { createElement, PropsWithChildren, HTMLAttributes } from 'react';
 import { conditionalString, names } from './utils';
-import '@styles/Container.css';
+import '../../assets/styles/Container.css';
 
 interface ContainerProps extends HTMLAttributes<HTMLElement> {
   blur?: boolean;
