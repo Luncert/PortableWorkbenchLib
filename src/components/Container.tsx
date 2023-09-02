@@ -1,7 +1,6 @@
-
 import { createElement, PropsWithChildren, HTMLAttributes } from 'react';
 import { conditionalString, names } from './utils';
-import styles from './Container.module.scss';
+import '@styles/Container.css';
 
 interface ContainerProps extends HTMLAttributes<HTMLElement> {
   blur?: boolean;
@@ -16,12 +15,12 @@ export default function Card(props: PropsWithChildren<ContainerProps>) {
     ...props,
     className: names(
       props.className || '',
-      styles.container,
-      conditionalString(blur, styles.blur),
-      conditionalString(props.radius, styles.radius),
-      conditionalString(props.shadow, styles.shadow),
-      conditionalString(props.defaultMargin != false, styles.defaultMargin),
-      conditionalString(props.defaultPadding != false, styles.defaultPadding),
+      'container',
+      conditionalString(blur, 'blur'),
+      conditionalString(props.radius, 'radius'),
+      conditionalString(props.shadow, 'shadow'),
+      conditionalString(props.defaultMargin != false, 'defaultMargin'),
+      conditionalString(props.defaultPadding != false, 'defaultPadding'),
     )
   };
   delete p['blur'];

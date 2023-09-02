@@ -5,23 +5,23 @@
   background-color: rgb(95, 95, 95);
 }
 
-.blur {
+.container .blur {
   opacity: 0.8;
   backdrop-filter: blur(10px);
 }
 
-.radius {
+.container .radius {
   border-radius: 5px;
 }
 
-.shadow {
+.container .shadow {
   box-shadow: -5px 0px 5px -5px rgba(0, 0, 0, 0.5), 5px 0px 5px -5px rgba(0, 0, 0, 0.5);
 }
 
-.defaultMargin {
+.container .defaultMargin {
   margin: 10px 5px;
 }
 
-.defaultPadding {
+.container .defaultPadding {
   padding: 5px 8px;
 }
