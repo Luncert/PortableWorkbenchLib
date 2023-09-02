@@ -2,10 +2,13 @@
   "name": "portableworkbenchlib",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "watch": ".\\node_modules\\.bin\\tsc -w -p .",
-    "compile": ".\\node_modules\\.bin\\tsc"
+    "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
+    "watch": "yarn tsc -w -p .",
+    "compile": "yarn tsc"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
   "homepage": "https://github.com/Luncert/PortableWorkbenchLib#readme",
   "dependencies": {
     "@types/animejs": "^3.1.7",
+    "@types/node": "^20.5.8",
     "@types/react": "^18.2.21",
     "animejs": "^3.2.1",
     "react": "^18.2.0",

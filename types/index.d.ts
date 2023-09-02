@@ -1,4 +1,3 @@
-
 export { default as AnimatedElement } from './components/AnimatedElement';
 export { default as Animator } from './components/Animator';
 export { default as Container } from './components/Container';
