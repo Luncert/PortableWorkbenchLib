@@ -13,7 +13,7 @@
   "scripts": {
     "build": "npm run compile && npm run build-types",
     "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
-    "publish": "npm run build && npm publish && cnpm sync portableworkbenchlib",
+    "release": "npm run build && npm publish && cnpm sync portableworkbenchlib",
     "watch": "yarn tsc -w -p .",
     "compile": "yarn tsc"
   },
