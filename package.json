@@ -1,13 +1,19 @@
 {
   "name": "portableworkbenchlib",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "types": "types/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "types/**/*",
+    "assets/**/*"
+  ],
   "scripts": {
     "build": "npm run compile && npm run build-types",
     "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
+    "publish": "npm run build && npm publish && cnpm sync portableworkbenchlib",
     "watch": "yarn tsc -w -p .",
     "compile": "yarn tsc"
   },

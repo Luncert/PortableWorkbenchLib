@@ -30,4 +30,4 @@ npm-debug.log.*
 .antlr
 *.tsbuildinfo
 lib
-types/
+types
